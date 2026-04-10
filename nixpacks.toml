@@ -1,0 +1,26 @@
+# ─────────────────────────────────────────────────────────────
+# Paisa Rakhna — Railway Build Config (nixpacks)
+# Railway yeh file use karta hai app build karne ke liye.
+# ─────────────────────────────────────────────────────────────
+
+[phases.setup]
+nixPkgs = ["php83", "php83Extensions.pdo", "php83Extensions.pdo_pgsql",
+           "php83Extensions.mbstring", "php83Extensions.xml",
+           "php83Extensions.tokenizer", "php83Extensions.ctype",
+           "php83Extensions.curl", "php83Extensions.fileinfo",
+           "php83Extensions.gd", "php83Extensions.zip",
+           "composer_2"]
+
+[phases.install]
+cmds = ["composer install --no-dev --optimize-autoloader"]
+
+[phases.build]
+cmds = [
+    "php artisan config:cache",
+    "php artisan route:cache",
+    "php artisan view:cache",
+    "php artisan storage:link"
+]
+
+[start]
+cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"
