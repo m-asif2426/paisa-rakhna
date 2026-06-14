@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "Paisa",
+    "slug": "paisa",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#16a265"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "pk.paisa.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#16a265"
+      },
+      "package": "pk.paisa.app",
+      "googleServicesFile": "./google-services.json"
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#16a265",
+          "sounds": []
+        }
+      ]
+    ],
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    }
+  }
+}
