@@ -1,0 +1,61 @@
+services:
+  - type: web
+    name: paisa-rakhna-api
+    runtime: php
+    plan: free
+    buildCommand: |
+      composer install --no-dev --optimize-autoloader
+      php artisan config:cache
+      php artisan route:cache
+      php artisan view:cache
+      php artisan migrate --force
+    startCommand: php artisan serve --host=0.0.0.0 --port=$PORT
+    envVars:
+      - key: APP_NAME
+        value: "Paisa Rakhna"
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_KEY
+        value: base64:AsKxhEqa/mj92yv77JPpFtvMudld9QZpE1UGB+R/96E=
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        value: ep-aged-thunder-a1vfd4jl-pooler.ap-southeast-1.aws.neon.tech
+      - key: DB_PORT
+        value: 5432
+      - key: DB_DATABASE
+        value: neondb
+      - key: DB_USERNAME
+        value: neondb_owner
+      - key: DB_PASSWORD
+        value: npg_VXAKlY9P4LOf
+      - key: DB_SSLMODE
+        value: require
+      - key: SESSION_DRIVER
+        value: database
+      - key: QUEUE_CONNECTION
+        value: database
+      - key: CACHE_STORE
+        value: database
+      - key: FILESYSTEM_DISK
+        value: public
+      - key: MAIL_MAILER
+        value: smtp
+      - key: MAIL_HOST
+        value: smtp.gmail.com
+      - key: MAIL_PORT
+        value: 587
+      - key: MAIL_USERNAME
+        value: asifbeta69@gmail.com
+      - key: MAIL_PASSWORD
+        value: ilasjribckoqwwym
+      - key: MAIL_FROM_ADDRESS
+        value: noreply@paisarakhna.pk
+      - key: MAIL_FROM_NAME
+        value: "Paisa Rakhna"
+      - key: SANCTUM_STATEFUL_DOMAINS
+        value: localhost,127.0.0.1
+      - key: CORS_ALLOWED_ORIGINS
+        value: "*"
